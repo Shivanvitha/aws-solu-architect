@@ -41,4 +41,65 @@ lb back end conection - enable the HTTP keep-alive option for your EC2 instances
 You can enable HTTP keep-alive in the web server settings for your EC2 instances. If you enable HTTP keep-alive, the load balancer can reuse back-end connections until the keep-alive timeout expires.
 
  We also recommend that you configure the idle timeout of your application to be larger than the idle timeout configured for the load balancer.
+ 
+ For Scheme, an Internet-facing load balancer routes requests from clients over the Internet to targets. 
+ 
+ An internal load balancer routes requests to targets using private IP addresses.
+ 
+ When you use HTTPS for your load balancer listener, you must deploy an SSL certificate on your load balancer.
+ 
+ The load balancer uses this certificate to terminate the connection and decrypt requests from clients before sending them to the targets.
+ 
+ You can enable or disable the Availability Zones for your load balancer at any time. 
+ 
+ After you enable an Availability Zone, the load balancer starts routing requests to the registered targets in that Availability Zone.
+ 
+ After you disable an Availability Zone, the targets in that Availability Zone remain registered with the load balancer, but the load balancer will not route requests to them.
+
+Note that you can select only one subnet per Availability Zone.
+
+Do not use the aws: prefix in your tag names or values because it is reserved for AWS use. You can't edit or delete tag names or values with this prefix.
+
+Tags with this prefix do not count against your tags per resource limit.
+
+As soon as your load balancer becomes available, you are billed for each hour or partial hour that you keep it running.
+
+You can't delete a load balancer if deletion protection is enabled. 
+
+Note that deleting a load balancer does not affect its registered targets.
+
+If you have a CNAME record for your domain that points to your load balancer, point it to a new location and wait for the DNS change to take effect before deleting your load balancer.
+
+Listener Configuration
+
+Listeners support the following protocols and ports:
+
+Protocols: HTTP, HTTPS
+Ports: 1-65535
+You can use an HTTPS listener to offload the work of encryption and decryption to your load balancer so that your applications can focus on their business logic.
+
+If the listener protocol is HTTPS, you must deploy exactly one SSL server certificate on the listener. 
+
+Application Load Balancers provide native support for WebSockets. You can use WebSockets with both HTTP and HTTPS listeners.
+
+Application Load Balancers provide native support for HTTP/2 with HTTPS listeners. 
+
+You can send up to 128 requests in parallel using one HTTP/2 connection.
+
+The load balancer converts these to individual HTTP/1.1 requests and distributes them across the healthy targets in the target group. 
+
+Because HTTP/2 uses front-end connections more efficiently, you might notice fewer connections between clients and the load balancer.
+
+You can't use the server-push feature of HTTP/2
+
+Listener Rules :
+
+When you create a listener, you define actions for the default rule. Default rules can't have conditions. You can not edit or delete.
+
+Rule Priority
+
+Each rule has a priority. Rules are evaluated in priority order, from the lowest value to the highest value. 
+
+The default rule is evaluated last. You can change the priority of a nondefault rule at any time. You cannot change the priority of the default rule. 
+
 
