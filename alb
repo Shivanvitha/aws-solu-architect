@@ -118,3 +118,22 @@ Limitation
 ACM supports RSA certificates with a 4096 key length and EC certificates. However, you cannot install these certificates on your load balancer through integration with ACM. You must upload these certificates to IAM in order to use them with your load balancer.
 
 You can replace the default certificate for your listener
+
+
+Monitor Your Application Load Balancers
+
+1. Access Logs : used to analyze the traffic patterns and troubleshoot issues -disabled by default
+compressed
+There is no additional charge for access logs and not charged for the bandwidth used by Elastic Load Balancing to send log files to Amazon S3
+Server-side encryption encrypts only the object data, not object metadata.
+The bucket cannot use encryption.
+The bucket must be in the same region as your load balancer.
+The bucket can be owned by a different account than the account that owns the load balancer.
+Bucket policies are a collection of JSON statements written in the access policy language to define access permissions for your bucket.
+Amazon Athena is an interactive query service that makes it easy to analyze data in Amazon S3 using standard SQL.
+For more information, see Querying Application Load Balancer Logs in the Amazon Athena User Guide.
+Loggly
+Splunk
+Sumo Logic
+2. CloudWatch Metrics : we can check whether the system is performing as expected
+3.
