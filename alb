@@ -1,1 +1,44 @@
 
+tg-can have targets in multiple az or outside the VPC  also
+
+path based routing, content based routing
+
+Access logs contain additional information and are stored in compressed format
+
+health checks are defined at the target group level and many CloudWatch metrics are reported at the target group level
+
+Attaching a target group to an Auto Scaling group enables you to scale each service dynamically based on demand.
+
+lb states : provisioning, active, failed
+
+IP Address Type
+
+ipv4
+The load balancer supports only IPv4 addresses (for example, 192.0.2.1)
+
+dualstack
+The load balancer supports both IPv4 and IPv6 addresses (for example, 2001:0db8:85a3:0:0:8a2e:0370:7334).
+
+Clients that communicate with the load balancer using IPv4 addresses resolve the A record 
+
+clients that communicate with the load balancer using IPv6 addresses resolve the AAAA record.
+
+However, the load balancer communicates with its targets using IPv4 addresses, 
+  regardless of how the client communicates with the load balancer. -Note that internal load balancers must use IPv4 addresses.
+
+By default, deletion protection is disabled for your load balancer
+
+The idle timeout value, in seconds. The default is 60 seconds.
+
+Indicates whether HTTP/2 is enabled. The default is true.
+
+You can use AWS WAF with your Application Load Balancer to allow or block requests based on the rules in a web access control list (web ACL).
+
+lb front end conection - closed when idle time out expires -- at least 1 byte of data before each idle timeout period elapses, and increase the length of the idle timeout period as needed.
+
+lb back end conection - enable the HTTP keep-alive option for your EC2 instances.
+
+You can enable HTTP keep-alive in the web server settings for your EC2 instances. If you enable HTTP keep-alive, the load balancer can reuse back-end connections until the keep-alive timeout expires.
+
+ We also recommend that you configure the idle timeout of your application to be larger than the idle timeout configured for the load balancer.
+
