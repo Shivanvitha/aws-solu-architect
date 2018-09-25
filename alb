@@ -102,4 +102,19 @@ Each rule has a priority. Rules are evaluated in priority order, from the lowest
 
 The default rule is evaluated last. You can change the priority of a nondefault rule at any time. You cannot change the priority of the default rule. 
 
+Update Server Certificates
 
+When you create an HTTPS listener, you specify a default certificate. You can also create a certificate list for the listener by adding additional certificates.
+
+Each certificate comes with a validity period. You must ensure that you renew or replace the certificate before its validity period ends. Renewing or replacing a certificate does not affect in-flight requests that were received by the load balancer node and are pending routing to a healthy target. After a certificate is renewed, new requests use the renewed certificate. After a certificate is replaced, new requests use the new certificate.
+
+You can manage certificate renewal and replacement as follows:
+
+Certificates provided by AWS Certificate Manager and deployed on your load balancer can be renewed automatically. ACM attempts to renew certificates before they expire. For more information, see Managed Renewal in the AWS Certificate Manager User Guide.
+If you imported a certificate into ACM, you must monitor the expiration date of the certificate and renew it before it expires. For more information, see Importing Certificates in the AWS Certificate Manager User Guide.
+If you imported a certificate into IAM, you must create a new certificate, import the new certificate to ACM or IAM, add the new certificate to your load balancer, and remove the expired certificate from your load balancer.
+Limitation
+
+ACM supports RSA certificates with a 4096 key length and EC certificates. However, you cannot install these certificates on your load balancer through integration with ACM. You must upload these certificates to IAM in order to use them with your load balancer.
+
+You can replace the default certificate for your listener
