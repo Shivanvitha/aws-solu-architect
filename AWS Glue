@@ -1,0 +1,21 @@
+AWS Trusted Advisor
+
+provide best practice recommendations and checks
+
+
+The AWSServiceRoleForSupport service-linked role enables all support API calls to be visible to customers through AWS CloudTrail.
+
+The AWSServiceRoleForSupport service-linked role trusts the support.amazonaws.com service to assume the role. 
+ the role's predefined permissions give AWS Support access to resource metadata, not customer data. Only AWS Support tools can assume this role, which exists within your AWS account.
+ 
+ 
+ Service-Linked Role Permissions for Trusted Advisor
+
+Trusted Advisor uses the service-linked role named AWSServiceRoleForTrustedAdvisor—which allows Trusted Advisor to access AWS services on your behalf.
+
+The AWSServiceRoleForTrustedAdvisor service-linked role trusts the following services to assume the role:
+
+trustedadvisor.amazonaws.com
+The role permissions policy allows Trusted Advisor to complete the following actions on the specified resources:
+
+Action: Read-only access on all AWS resources
